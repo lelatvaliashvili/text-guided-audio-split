@@ -14,8 +14,8 @@ def get_clap_model(device="cpu"):
     if _clap_model is None and CLAP_Module is not None:
         _clap_model = CLAP_Module(enable_fusion=False, amodel='HTSAT-base')
         _clap_model.load_ckpt(
-            'C:/Users/akyol/Desktop/text-guided-audio-split-main/music_speech_audioset_epoch_15_esc_89.98.pt'
-        )   # Update this path as needed
+            'CLAP_CHECKPOINT_PATH'
+        )   # Update this path
         _clap_model.eval()
        # _clap_model.to(device)
     return _clap_model
@@ -33,7 +33,7 @@ def separate_audio(filepath: str, selected_stems: list[str]):
     #model = get_model(name="mdx_extra_q")
     sources = ["stem"]
     model = HDemucs(sources = sources)
-    checkpoint = torch.load("outputs/xps/97d170e1/best.th", map_location="cpu", weights_only=False)
+    checkpoint = torch.load("CHECKPOINT_PATH", map_location="cpu", weights_only=False) # Update this path
     model.load_state_dict(checkpoint['state'])
     model.eval()
     model.to(device)
