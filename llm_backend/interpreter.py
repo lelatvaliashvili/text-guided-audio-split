@@ -17,9 +17,9 @@ with open("api_key.txt", "r") as file:
 client = openai.OpenAI(api_key=api_key)
 sources = ["stem"]
 
-#model = get_model(name="mdx_extra_q")
+# model = get_model(name="mdx_extra_q")
 model = HDemucs(sources = sources)
-checkpoint = torch.load("outputs/xps/97d170e1/best.th", map_location="cpu",weights_only=False)
+checkpoint = torch.load("CHECKPOINT_PATH", map_location="cpu",weights_only=False)
 model.load_state_dict(checkpoint['state'])
 model.eval()
 
