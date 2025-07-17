@@ -6,9 +6,9 @@ from pathlib import Path
 from laion_clap import CLAP_Module
 import numpy as np
 
-# --------- Paths & Config ---------
-DATASET_PATH = Path("/mnt/c/Users/akyol/Desktop/data")
-SAVE_PATH = Path("/mnt/c/Users/akyol/Desktop/triplets")
+# --------- Paths & Config --------- 
+DATASET_PATH = Path("") # UPDATE
+SAVE_PATH = Path("") # UPDATE
 SAVE_PATH.mkdir(parents=True, exist_ok=True)
 
 # Segmenting params
@@ -19,7 +19,7 @@ SILENCE_THRESHOLD = 1e-4 # RMS below this is considered silent
 
 # --------- Model Setup ---------
 clap_model = CLAP_Module(enable_fusion=False, amodel='HTSAT-base')
-clap_model.load_ckpt("/mnt/c/Users/akyol/Desktop/text-guided-audio-split-main/music_speech_audioset_epoch_15_esc_89.98.pt")
+clap_model.load_ckpt("") # Path to CLAP Checkpoint
 clap_model.eval()
 
 def is_not_silent(waveform, threshold=SILENCE_THRESHOLD):
